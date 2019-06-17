@@ -51,9 +51,11 @@ class neural_net:
                     image = Image.open(infile)
                     image = image.rotate(max_ind*90, expand=1)
                     image.save(infile, "JPEG")
+                    print infile.split('images/')[1] + " was rotated counterclockwise by " + str(max_ind*90) + " degrees."
                 except IOError:
                     print "cannot create JPG for '%s'" % infile
-            print infile.split('images/')[1] + " was rotated counterclockwise by " + str(max_ind*90) + " degrees."
+            else:
+                print infile.split('images/')[1] + " was not rotated."
 
     def train(self, X, Y, lr, iterations):
         costs = []
@@ -75,42 +77,6 @@ class neural_net:
         plt.xlabel('Iterations of Gradient Descent')
         plt.title("Learning rate=" + str(lr))
         return params
-
-def main():
-    # Define hyperparameters
-    layers = [4, 1]
-    layer_activations = ["relu", "sigmoid"]
-    lr = .015
-    iterations = 300
-
-    # Initialize model
-    model_1 = neural_net(layers, layer_activations)
-
-    # Train
-    X_train, Y_train, _ = load_pics("train")
-    params = model_1.train(X_train, Y_train, lr, iterations)
-    pred_train, p_train = model_1.predict(params, X_train, Y_train)
-    print ""
-    print "The actual classification of the training images are:    " + np.array2string(np.squeeze(Y_train))
-    print "The predicted classification of the training images are: " + np.array2string(np.squeeze(pred_train.astype(int)))
-    print "The overall accuracy of the model is: " + p_train
-
-    # Validate
-    X_val, Y_val, _ = load_pics("validate")
-    pred_val, p_val = model_1.predict(params, X_val, Y_val)
-    print "\n-------------------- Validating --------------------"
-    print "The actual classification of the validating images are:    " + np.array2string(np.squeeze(Y_val))
-    print "The predicted classification of the validating images are: " + np.array2string(np.squeeze(pred_val.astype(int)))
-    print "The overall accuracy of the model is: " + p_val
-
-    # Test
-    print "\n-------------------- Testing --------------------"
-    X_test, _, image_dict_test = load_pics("test")
-    pred_test, _ = model_1.predict(params, X_test)
-    print "The predicted classification of the testing images are:   " + np.array2string(np.squeeze(pred_test.astype(int)))
-    model_1.flip(params, image_dict_test)
-
-    plt.show()
 
 # Initialize weight matrices to small random values and bias vectors to zero
 def init_params(layers, num_layers):
@@ -298,6 +264,3 @@ def backward_prop(dL_dA, A, A_prev, W, b, activation):
     dL_db = 1.0/m * np.sum(dL_dZ, axis = 1, keepdims = True)
 
     return dL_dA_prev, dL_dW, dL_db
-
-if __name__ == '__main__':
-    main()

@@ -10,8 +10,8 @@ def main():
     #   learning rate for gradient descent
     #   number of gradient descent iterations.
 
-    # number of desired hidden layers in the neural network (including the output layer)
-    num_layers = int(input("Enter the number of hidden layers you would like in your neural network: "))
+    # number of desired layers in the neural network (not including the input layer)
+    num_layers = int(input("Enter the number of layers you would like in your neural network (positive integer): "))
 
     # layers - number of hidden units in each layer excluding the input layer
     # ex. [4, 1] means there are 4 hidden units in the first layer and 1 unit in the output layer
@@ -22,19 +22,19 @@ def main():
     # and the 'Sigmoid' activation function is used at the output of the second layer
     layer_activations = []
 
-    for x in range(num_layers):
-        num_units = int(input("Enter the number of units you would like in layer #{}: ".format(x)))
-        layer_type = input("Enter the activation function that will be applied to all units in layer #{}: ".format(x))
+    for x in range(1, num_layers+1):
+        num_units = int(input("Enter the number of units you would like in layer #{} (positive integer): ".format(x)))
+        layer_type = input("Enter the activation function that will be applied to all units in layer #{} (\"sigmoid\", \"tanh\", \"relu\", \"leaky_relu\"): ".format(x))
         layers.append(num_units)
         layer_activations.append(layer_type)
 
     # lr - learning rate
     # ex. lr = 0.015
-    lr = float(input("Enter the learning rate: "))
+    lr = float(input("Enter the learning rate (positive float): "))
 
     # iterations - number of iterations of gradient descent
     # ex. iterations = 300
-    iterations = int(input("Enter the number of iterations: "))
+    iterations = int(input("Enter the number of iterations (positive integer): "))
 
     # Model description
     print "\n-------------------- Model Description --------------------"

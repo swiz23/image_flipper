@@ -40,3 +40,9 @@ Finally, you will asked to asked:
 Enter the number of iterations (positive integer):
 ```
 This is where you should input the number of gradient descent iterations the neural network should do while training. A large value will take more time while a small value might not be enough to find the minimum of the cost function. This can be easily gauged by looking at the output of the cost function on the graph that pops up or in the terminal as the network is training.
+
+Note that you can also comment out these prompts in the `nn_main.py` file and instead hard-code your model directly. The sections to comment and uncomment are clearly labeled in the file.
+
+### Structure
+
+ 

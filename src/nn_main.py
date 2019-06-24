@@ -10,6 +10,8 @@ def main():
     #   learning rate for gradient descent
     #   number of gradient descent iterations.
 
+############# Comment this section out if you would like to hardcode your network model ##########################################
+
     # number of desired layers in the neural network (not including the input layer)
     num_layers = int(input("Enter the number of layers you would like in your neural network (positive integer): "))
 
@@ -35,6 +37,17 @@ def main():
     # iterations - number of iterations of gradient descent
     # ex. iterations = 300
     iterations = int(input("Enter the number of iterations (positive integer): "))
+
+####################################################################################################################################
+
+#######################3 Uncomment this section to hardcode your neural network model ##############################################
+    #
+    # layers = [4, 1]
+    # layer_activations = ["relu", "sigmoid"]
+    # lr = 0.015
+    # iterations = 300
+    #
+#################################################################################################################################3##
 
     # Model description
     print "\n-------------------- Model Description --------------------"

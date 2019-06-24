@@ -55,7 +55,7 @@ class neural_net:
                 except IOError:
                     print "cannot create JPG for '%s'" % infile
             else:
-                print infile.split('images/')[1] + " was not rotated."
+                print infile.split('images/')[1] + " was not rotated since the confidence was too low."
 
     def train(self, X, Y, lr, iterations):
         costs = []
@@ -123,7 +123,7 @@ def load_pics(image_type):
     image_list = []
     image_dict = {}
     Y = []
-    image_directories = ["non_upright_images", "upright_images"]
+    image_directories = ["incorrect_images", "correct_images"]
     if image_type == "train":
         folder = "train"
     elif image_type == "validate":

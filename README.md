@@ -44,5 +44,36 @@ This is where you should input the number of gradient descent iterations the neu
 Note that you can also comment out these prompts in the `nn_main.py` file and instead hard-code your model directly. The sections to comment and uncomment are clearly labeled in the file.
 
 ### Structure
+ The directory structure showing how the images were organized is shown below. For my application, images that were oriented correctly were placed in the `correct_images` directory while those that were improperly oriented were placed in the `incorrect_images` directory.
+ ```
+ .
+ ├── test
+ │   └── images
+ │       ├── Test Image 1
+ │       ├── Test Image 2
+ │       └── Test Image ...
+ ├── train
+ │   ├── correct_images
+ │   │   ├── Train Correct Image 1
+ │   │   ├── Train Correct Image 2
+ │   │   └── Train Correct Image ...
+ │   └── incorrect_images
+ │       ├── Train Incorrect Image 1
+ │       ├── Train Incorrect Image 2
+ │       └── Train Incorrect Image ...
+ └── validate
+     ├── correct_images
+     │   ├── Validate Correct Image 1
+     │   ├── Validate Correct Image 2
+     │   └── Validate Correct Image ...
+     └── incorrect_images
+         ├── Validate Incorrect Image 1
+         ├── Validate Incorrect Image 2
+         └── Validate Incorrect Image ...
+```
 
- 
+### Other Applications
+While I was interested in rotating images you would normally see while hiking, it wouldn't be too difficult to do the same for a different application. For example, you could train the network to recognize the correct orientation of images with skyscrapers or people! Just swap out the pictures currently in the image directories for your own, and you'll be good to go! With a bit of code tweaking on the 'post image-processing' side, you could also train a network to recognize when there are people in images. Then, you could parse a directory of images and separate them into two directories - one with people and one without.
+
+### Future Work
+At some point, I plan to add the ability to make a network be able to do multi-classification. Additionally, I might add a feature to just print out to the console whether an image belongs to one class or the other.
